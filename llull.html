@@ -1,8 +1,141 @@
 <html>
-<head>
-<title>Llull</title>
-</head>
-<body>
-Hello, world!
-</body>
+  <head>
+    <title>Llull</title>
+  </head>
+  <body>
+
+<center>
+  <h3>llull</h3>
+  <br>
+
+Word: <span id="word">-</span>
+<br>
+<br>
+
+<button onclick="start()">Start</button>
+<button onclick="stop()">Stop</button>
+Syllables:<input size=2 maxlength=2 id='word_length' value=4 />
+<br><br>
+This is a little program with no practical utility<a href="http://unsongbook.com/">.</a>
+<br>
+<a href="https://github.com/pirindiel/llull">github source</a>
+</center>
+
+<script>
+var known_words = ['HANAPHOR-KOTA-SALUSI-NAI-AVORA-STE-KORUSA',
+               'KUHU-SHEN-TAR-TAVAL-ANASASI-VA',
+               'ROS-AILE-KAPHILUTON-MIRAKOI-KALANIEMI-TSHANA-KAI-KAI-EPHSANDER-GALISDO-TAHUN-MEH-MEH-MEH-MEH-MEH-MEH',
+               'AR-ASH-KON-CHEL-NA-VAN-TSIR',
+               'AR-ASH-KON-CHEL-NA-VAN-TSIT',
+               'VIS-LAIGA-RON-TEPHENOR-AST-AST-TELISA-ROK-SUPH-VOD-APANOR-HOV-KEREG-RAI-UM',
+               'VIS-LAIGA-RON-TEPHENOR-AST-AST-TELISA-ROK-SUPH-VOD-APANOR-HOV-KEREG-RAI-US',
+               'VIS-LAIGA-RON-TEPHENOR-AST-AST-TELISA-ROK-SUPH-VOD-APANOR-HOV-KEREG-RAI-UA',
+               'VIS-LAIGA-RON-TEPHENOR-AST-AST-TELISA-ROK-SUPH-VOD-APANOR-HOV-KEREG-RAI-UP',
+               'VIS-LAIGA-RON-TEPHENOR-AST-AST-TELISA-ROK-SUPH-VOD-APANOR-HOV-KEREG-RAI-UTS',
+               'VIS-LAIGA-RON-TEPHENOR-AST-AST-TELISA-ROK-SUPH-VOD-APANOR-HOV-KEREG-RAI-UK',
+               'VIS-LAIGA-RON-TEPHENOR-AST-AST-TELISSA-ROC-SUPH-VOD-APANOR-HOV-KEREG-RAI-SI',
+               'COR-ASTA-NAMI-NAMI-TELTHE-SO-KATA-RU'];
+
+
+var syllable_dict = {};
+function populate_syllables(words) {
+  for (i in words) {
+    var word = words[i];
+    s = word.split('-');
+    for (j in s) {
+      var syl = s[j];
+      syllable_dict[syl] = 1;
+    }
+  }
+  console.log("Syllables:" + JSON.stringify(syllable_dict));
+}
+populate_syllables(known_words);
+
+var syllables = Object.keys(syllable_dict);
+
+// Random seed
+var x = 2, y = 4, z = 7, w = new Date().getTime();
+
+function xorshift128() {
+    var t = x;
+    t ^= t << 11;
+    t ^= t >> 8;
+    x = y; y = z; z = w;
+    w ^= w >> 19;
+    w ^= t;
+    return w;
+}
+
+var audio_queue = [];
+var audio_player = null;
+
+function random_word(syllables, n) {
+  var word = [];
+  for (var i = 0; i < n; i++) {
+    var r = xorshift128() % syllables.length;
+    syllable = syllables[r];
+    word.push(syllable);
+  }
+  return word;
+}
+
+function update_word_div(word) {
+  word_div = document.getElementById('word');
+  word_div.innerHTML = word.join('-');
+}
+
+function play_word(word) {
+  for (var i in word) {
+    var syllable = word[i];
+    var url = '/cantor/' + syllable + '.ogg';
+    audio_queue.push(url);
+  }
+}
+
+function new_word() {
+  var word_length_element = document.getElementById('word_length');
+  var word_length = parseInt(word_length_element.value);
+  var word = random_word(syllables, word_length);
+  update_word_div(word);
+  play_word(word);
+}
+
+function player() {
+  if (audio_player == null && audio_queue.length == 0) {
+    var meaning = '';
+    if (meaning != '') {
+      alert("Meaning found:" + meaning);
+    }
+
+    new_word();
+  }
+
+  if (audio_player == null) {
+    url = audio_queue.shift();
+    audio_player = new Audio(url);
+    audio_player.play();
+  } else {
+    if (audio_player.ended) {
+      audio_player = null;
+    }
+  }
+}
+
+var intervalId = null;
+function start() {
+  if (intervalId == null) {
+    intervalId = setInterval(player, 10);
+  }
+}
+
+function stop() {
+  if (intervalId != null) {
+    clearInterval(intervalId);
+  }
+  intervalId = null;
+}
+
+</script>
+
+  </body>
 </html>
