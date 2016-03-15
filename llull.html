@@ -87,7 +87,7 @@ function update_word_div(word) {
 function play_word(word) {
   for (var i in word) {
     var syllable = word[i];
-    var url = '/cantor/' + syllable + '.ogg';
+    var url = 'cantor/' + syllable + '.ogg';
     audio_queue.push(url);
   }
 }
