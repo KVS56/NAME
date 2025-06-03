@@ -44,9 +44,9 @@ var known_words = ['HANAPHOR-KOTA-SALUSI-NAI-AVORA-STE-KORUSA',
 function getRandomInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
    }
-  let randomInteger = getRandomInteger(1, 50); // Random integer between 1 and 9
+  let word_length  = getRandomInteger(1, 50); // Random integer between 1 and 9
 
-setInterval(getRandomInteger)
+setInterval(getRandomInteger, 1000) 
 
 var syllable_dict = {};
 function populate_syllables(words) {
@@ -105,7 +105,6 @@ function play_word(word) {
 
 function new_word() {
   var word_length_element = document.getElementById('word_length');
-  var word_length = randomInteger;
   var word = random_word(syllables, word_length);
   update_word_div(word);
   play_word(word);
