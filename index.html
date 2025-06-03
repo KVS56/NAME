@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>names-of-god</title>
+    <title>Names-Of-God</title>
     <style>
       body{
           background-image: url(https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg97J1IEJXTe7MWu5lrnDg4ZBJ1FT_XVW8UsToY805lF6BMofZViQhhzD8OxctFE84XPNK-ni8FzD61B5yHXYUoef09R3C6vJfQiVXBzgFJWopOZ37f-8QMbwhjV2cWy1mNRKbG/s1600/virat-Rupa.jpg)
@@ -20,7 +20,6 @@ Word: <span id="word">-</span>
 
 <button onclick="start()">Start</button>
 
-Syllables:<input size=2 maxlength=2 id='word_length' value=4 />
 <br><br>
 This is a little program.
 <br>
@@ -38,7 +37,7 @@ var known_words = ['HARI-KRISHNA-SESHASHAYI-NARAYANA-ANANTAVAIBHAVA',
                'OJAHS–TEJO-DYUTI–DHARAH-PRAKASH–ATMAA-PRATAPPANAH-BHUDDHAH–SPASHT–AKHSHARO–MANTRAH-CHANDRAAMSHUH-RBHASKARA–DYUTIH',
                'SHANKHA–BHRUT–NANDEE–CHAKREE–SHARNGAPANI–GADA–DHARAH-RATHANGA–PANI–RAKSHOBHYAH-SARVAPRAHARANAA–YUDHAH',
                ];
-var human = "vavara"
+var human = "foreal"
 
 var word_length  = 3
 
@@ -88,7 +87,7 @@ function update_word_div(word) {
   word_div = document.getElementById('word');
   word_div.innerHTML = word.join('-');
 }
-
+// originally meant to play computer pseech for ltters but I can't be bothered to get recordngs for all that, or to rewrite it
 function play_word(word) {
   for (var i in word) {
     var syllable = word[i];
