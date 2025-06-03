@@ -40,7 +40,7 @@ var known_words = ['HARI-KRISHNA-SESHASHAYI-NARAYANA-ANANTAVAIBHAVA',
                ];
 var human = "vavara"
 
-var word_length  = 50
+var word_length  = 3
 
 var syllable_dict = {};
 function populate_syllables(words) {
@@ -92,7 +92,7 @@ function update_word_div(word) {
 function play_word(word) {
   for (var i in word) {
     var syllable = word[i];
-    var url = 'https://upload.wikimedia.org/wikipedia/commons/0/07/Silence.ogg';
+    var url = 'https://upload.wikimedia.org/wikipedia/commons/8/81/Short_Silent%2C_Empty_Audio.ogg';
     audio_queue.push(url);
   }
 }
