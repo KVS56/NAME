@@ -41,11 +41,15 @@ var known_words = ['HANAPHOR-KOTA-SALUSI-NAI-AVORA-STE-KORUSA',
                'VIS-LAIGA-RON-TEPHENOR-AST-AST-TELISA-ROK-SUPH-VOD-APANOR-HOV-KEREG-RAI-UK',
                'VIS-LAIGA-RON-TEPHENOR-AST-AST-TELISSA-ROC-SUPH-VOD-APANOR-HOV-KEREG-RAI-SI',
                'COR-ASTA-NAMI-NAMI-TELTHE-SO-KATA-RU'];
+var human = "vavara"
+  
 function getRandomInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
-   }
-  var word_length  = getRandomInteger(1, 50); // Random integer between 1 and 9
-
+    }
+  if (human !="vaara") {
+   var word_length  = getRandomInteger(1, 50); 
+}
+  
 setInterval(getRandomInteger, 100) 
 
 var syllable_dict = {};
