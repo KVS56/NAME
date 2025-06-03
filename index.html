@@ -41,7 +41,11 @@ var known_words = ['HANAPHOR-KOTA-SALUSI-NAI-AVORA-STE-KORUSA',
                'VIS-LAIGA-RON-TEPHENOR-AST-AST-TELISA-ROK-SUPH-VOD-APANOR-HOV-KEREG-RAI-UK',
                'VIS-LAIGA-RON-TEPHENOR-AST-AST-TELISSA-ROC-SUPH-VOD-APANOR-HOV-KEREG-RAI-SI',
                'COR-ASTA-NAMI-NAMI-TELTHE-SO-KATA-RU'];
-
+function getRandomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+   }
+  let randomInteger = getRandomInteger(1, 50); // Random integer between 1 and 9
+   
 
 var syllable_dict = {};
 function populate_syllables(words) {
@@ -100,7 +104,7 @@ function play_word(word) {
 
 function new_word() {
   var word_length_element = document.getElementById('word_length');
-  var word_length = Math.random();
+  var word_length = randomInteger;
   var word = random_word(syllables, word_length);
   update_word_div(word);
   play_word(word);
@@ -108,7 +112,7 @@ function new_word() {
 
 function player() {
   if (audio_player == null && audio_queue.length == 0) {
-    var meaning = '';
+    var meaning = 'the life';
     if (meaning != '') {
       alert("Meaning found:" + meaning);
     }
