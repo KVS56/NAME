@@ -22,7 +22,7 @@ Word: <span id="word">-</span>
 
 Syllables:<input size=2 maxlength=2 id='word_length' value=4 />
 <br><br>
-This is a little program with no practical utility<a href="http://unsongbook.com/">.</a>
+This is a little program.
 <br>
 <a href="https://github.com/KVS56/NAME">github source</a>
 </center>
@@ -100,7 +100,7 @@ function play_word(word) {
 
 function new_word() {
   var word_length_element = document.getElementById('word_length');
-  var word_length = parseInt(word_length_element.value);
+  var word_length = 7;
   var word = random_word(syllables, word_length);
   update_word_div(word);
   play_word(word);
