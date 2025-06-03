@@ -100,7 +100,7 @@ function play_word(word) {
 
 function new_word() {
   var word_length_element = document.getElementById('word_length');
-  var word_length = 7;
+  var word_length = Math.random();
   var word = random_word(syllables, word_length);
   update_word_div(word);
   play_word(word);
