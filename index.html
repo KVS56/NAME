@@ -43,10 +43,7 @@ var known_words = ['HANAPHOR-KOTA-SALUSI-NAI-AVORA-STE-KORUSA',
                'COR-ASTA-NAMI-NAMI-TELTHE-SO-KATA-RU'];
 var human = "vavara"
 
-setInterval(function getRandomInteger(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-   var word_length  = getRandomInteger(1, 50); 
-}, 1000);
+var word_length  = 50
 
 var syllable_dict = {};
 function populate_syllables(words) {
