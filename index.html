@@ -45,7 +45,8 @@ function getRandomInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
    }
   let randomInteger = getRandomInteger(1, 50); // Random integer between 1 and 9
-   
+
+setInterval(getRandomInteger)
 
 var syllable_dict = {};
 function populate_syllables(words) {
@@ -112,7 +113,7 @@ function new_word() {
 
 function player() {
   if (audio_player == null && audio_queue.length == 0) {
-    var meaning = 'the life';
+    var meaning = '';
     if (meaning != '') {
       alert("Meaning found:" + meaning);
     }
